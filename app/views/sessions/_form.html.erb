@@ -1,22 +1,40 @@
-<%= form_for :session, url: session_path do |form| %>
-  <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
+
+<%= form_for :session, url: session_path, :html => {:class => "form-horizontal center"} do |form| %>
+  <div class="form-group">
+    <%= form.label :email, class: "col-sm-2 control-label" %>
+    <div class="col-md-4">  
+      <%= form.text_field :email, type: 'email', class: "form-control" %>
+    </div>
   </div>
 
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+  <div class="form-group">
+    <%= form.label :password, class: "col-sm-2 control-label" %>
+    <div class="col-md-4"> 
+      <%= form.password_field :password, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="submit-field">
-    <%= form.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <%= form.submit class: "btn btn-default"%>
+    </div>
   </div>
 
   <div class="other-links">
     <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
+      <%= link_to t(".sign_up"), sign_up_path, class: "col-sm-offset-2 col-sm-10"%>
     <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
+    <%= link_to t(".forgot_password"), new_password_path, class: "col-sm-offset-2 col-sm-10" %>
   </div>
 <% end %>
+

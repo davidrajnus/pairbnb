@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426022002) do
+ActiveRecord::Schema.define(version: 20170427030758) do
+
+  create_table "authentications", force: :cascade do |t|
+    t.string   "uid"
+    t.string   "token"
+    t.string   "provider"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -19,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170426022002) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "email",                          null: false
-    t.string   "encrypted_password", limit: 128, null: false
+    t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128, null: false
     t.index ["email"], name: "index_users_on_email"

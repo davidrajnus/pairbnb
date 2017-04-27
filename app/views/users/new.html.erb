@@ -4,12 +4,14 @@
   <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>
 
-    <div class="submit-field">
-      <%= form.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <%= form.submit class: "btn btn-default"%>
     </div>
+  </div>
 
     <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
+      <%= link_to t(".sign_in"), sign_in_path, class: "col-sm-offset-2 col-sm-10" %>
     </div>
   <% end %>
 </div>
