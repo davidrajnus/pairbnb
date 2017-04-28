@@ -1,0 +1,14 @@
+
+<div id="clearance" class="sign-up">
+  <h2>NEW LISTINGS</h2>
+
+  <%= form_for @listing do |form| %>
+    <%= render partial: '/listings/form', object: form %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <%= form.submit class: "btn btn-default"%>
+    </div>
+  </div>
+  <% end %>
+</div>

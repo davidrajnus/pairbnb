@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, format: { with: /.+@.+\.com/ }
 
   has_many :authentications, :dependent => :destroy
+  has_many :listings
 
   @@login = false
 

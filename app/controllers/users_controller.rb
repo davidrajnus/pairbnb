@@ -29,7 +29,7 @@ class UsersController < Clearance::UsersController
 	#        user.password = password
 	#      end
 	# end
-
+	private
 	def user_from_params
 		params.require(:user).permit(:username, :first_name, :last_name, :email, :password)
 	end
