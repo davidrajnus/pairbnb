@@ -1,1 +1,19 @@
-This is the listing for the id
+This is the listing for the id<br>
+<%= @listing.name %><br>
+<%= @listing.address %><br>
+<%= @listing.place_type %><br>
+<%= @listing.property_type %><br>
+<%= @listing.price %><br>
+<%= @listing.description %><br>
+
+<strong>Listing Picture</strong>
+<br>
+<% if @listing.avatars.present? %>
+<% @listing.avatars.each do |pic| %>
+<%= image_tag pic%>
+<%end%>
+<%end%>
+
+
+ <%= button_to 'Tag Something', new_listing_tag_path(@listing), method: :get %>
+

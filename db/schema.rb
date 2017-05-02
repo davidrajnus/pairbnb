@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427083549) do
+ActiveRecord::Schema.define(version: 20170502042402) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authentications", force: :cascade do |t|
     t.string   "uid"
@@ -19,34 +22,61 @@ ActiveRecord::Schema.define(version: 20170427083549) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_authentications_on_user_id"
+    t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
   end
 
   create_table "listings", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
+    t.integer  "place_type"
+    t.string   "property_type"
+    t.integer  "room_number"
+    t.integer  "bed_number"
+    t.integer  "guest_number"
     t.string   "address"
-    t.string   "type"
-    t.boolean  "smoking"
+    t.string   "zipcode"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
     t.integer  "price"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_listings_on_user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.json     "avatars"
+    t.index ["user_id"], name: "index_listings_on_user_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.integer  "property_type"
+    t.integer  "room_type"
+    t.integer  "wifi"
+    t.integer  "kitchen"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["listing_id"], name: "index_tags_on_listing_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
     t.string   "email",                          null: false
+    t.integer  "gender"
+    t.string   "phone"
+    t.string   "country"
+    t.string   "birthdate"
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128, null: false
-    t.index ["email"], name: "index_users_on_email"
-    t.index ["remember_token"], name: "index_users_on_remember_token"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "user_role"
+    t.string   "avatar"
+    t.json     "avatars"
+    t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 
+  add_foreign_key "authentications", "users"
 end

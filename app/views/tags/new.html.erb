@@ -1,0 +1,30 @@
+This is the tags new page
+
+<%= form_for @tag, :url => listing_tags_path(@listing) do |form| %>
+
+  <div class="room-field">
+      <%= form.select :property_type,[["House", :house],["Apartment", :apartment]] %>
+    </div>
+
+  <div class="room-field">
+      <%= form.select :room_type,[["Shared", :shared],["Entire", :entire]] %>
+    </div>
+
+    <div class="room_field">
+
+    <%= label_tag(:wifi, "Wifi") %>
+    <%= form.radio_button(:wifi, "yes") %>
+    <%= label_tag(:wifi, "Yes") %>
+    <%= form.radio_button(:wifi, "no") %>
+    <%= label_tag(:wifi, "No") %>
+  </div>
+
+  <div class="room-field">
+      <%= form.select :kitchen,[["Full", :full],["Small", :small],["Common", :common]] %>
+    </div>
+
+  <div class="col-sm-offset-2 col-sm-10">
+      <%= form.submit %>
+  </div>
+
+<% end %>

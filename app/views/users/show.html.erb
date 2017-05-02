@@ -1,0 +1,13 @@
+<h1>This is the profile page for user id</h1>
+<%=full_name%>
+<br>
+<strong>Profile Picture</strong>
+<br>
+<% if @user.avatar.present? %>
+<%= image_tag @user.avatar_url%>
+<%end%>
+
+<br>
+<% if @user.avatar.present? %>
+<%= image_tag @user.avatar_url(:thumb)%>
+<%end%>

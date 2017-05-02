@@ -7,6 +7,44 @@
 </div>
 
 <div class="form-group">
+  <%= form.label :place_type, class: "col-sm-2 control-label" %>
+  0 = city 1 = kampong 2 = industrial
+  <div class="col-md-4"> 
+  <%= form.text_field :place_type, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :property_type, class: "col-sm-2 control-label" %>
+  <div class="col-md-4"> 
+  <%= form.text_field :property_type, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :room_number, class: "col-sm-2 control-label" %>
+  <div class="col-md-4"> 
+  <%= form.text_field :room_number, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :bed_number, class: "col-sm-2 control-label" %>
+  <div class="col-md-4"> 
+  <%= form.text_field :bed_number, class: "form-control" %>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <%= form.label :guest_number, class: "col-sm-2 control-label" %>
+  <div class="col-md-4"> 
+  <%= form.text_field :guest_number, class: "form-control" %>
+  </div>
+</div>
+
+
+<div class="form-group">
   <%= form.label :address, class: "col-sm-2 control-label" %>
     <div class="col-md-4"> 
   <%= form.text_field :address, class: "form-control" %>
@@ -14,9 +52,30 @@
 </div>
 
 <div class="form-group">
-  <%= form.label :type, class: "col-sm-2 control-label" %>
-  <div class="col-md-4"> 
-  <%= form.text_field :type, class: "form-control" %>
+  <%= form.label :zipcode, class: "col-sm-2 control-label" %>
+    <div class="col-md-4"> 
+  <%= form.text_field :zipcode, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :city, class: "col-sm-2 control-label" %>
+    <div class="col-md-4"> 
+  <%= form.text_field :city, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :state, class: "col-sm-2 control-label" %>
+    <div class="col-md-4"> 
+  <%= form.text_field :state, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :country, class: "col-sm-2 control-label" %>
+    <div class="col-md-4"> 
+  <%= form.text_field :country, class: "form-control" %>
   </div>
 </div>
 
@@ -31,5 +90,12 @@
   <%= form.label :description, class: "col-sm-2 control-label" %>
   <div class="col-md-4">
   <%= form.text_field :description, class: "form-control" %>
+  </div>
 </div>
+
+<div class="form-group">
+  <%= form.label :images, class: "col-sm-2 control-label" %>
+  <div class="col-md-4">
+  <%= form.file_field :avatars, multiple: true %>
+  </div>
 </div>

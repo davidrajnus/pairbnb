@@ -1,10 +1,4 @@
 <div class="form-horizontal center">
-<div class="form-group">
-    <%= form.label :email, class: "col-sm-2 control-label" %>
-  <div class="col-md-4"> 
-    <%= form.text_field :email, class: "form-control" %>
-  </div>
-</div>
 
 <div class="form-group">
   <%= form.label :username, class: "col-sm-2 control-label" %>
@@ -28,10 +22,47 @@
 </div>
 
 <div class="form-group">
+    <%= form.label :email, class: "col-sm-2 control-label" %>
+  <div class="col-md-4"> 
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <%= form.label :birthday, class: "col-sm-2 control-label" %>
+  <div class="col-md-4">
+  <%= form.date_field :birthdate, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= form.label :phone, class: "col-sm-2 control-label" %>
+  <div class="col-md-4"> 
+    <%= form.text_field :phone, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+<%= form.label :country, class: "col-sm-2 control-label" %>
+  <div class="col-md-4"> 
+  <%= form.country_select :country, {priority_countries: %w(Singapore Malaysia)}, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
   <%= form.label :password, class: "col-sm-2 control-label" %>
   <div class="col-md-4">
   <%= form.password_field :password, class: "form-control" %>
-</div>
+  </div>
 </div>
 
+<div class="form-group">
+  <%= form.label :profile_picture, class: "col-sm-2 control-label" %>
+  <div class="col-md-4">
+  <%= form.file_field :avatar , class: "form-control" %>
+  </div>
+</div>
+
+</div>
 

@@ -1,0 +1,10 @@
+<h1> User/index page </h1>
+<p>This page lists all users</p>
+
+<% @users.ea h do |user| %>
+  <%= user.username %> <br>
+  <%= user.first_name %> <br>
+  <%= user.last_name %> <br>
+  <%= user.email %> <br>
+  <br>
+  <%end%>
