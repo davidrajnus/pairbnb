@@ -10,11 +10,15 @@ Rails.application.routes.draw do
     resources :tags
   end
 
+  resources :listings do 
+    resources :bookings, only: [:create]
+  end
+
   resources :users do 
     resources :listings
   end
 
-  resources :bookings, only: [:create, :destroy]
+  resources :bookings, only: [:destroy]
 
 
   resources :users, controller: "users", only: [:create] do

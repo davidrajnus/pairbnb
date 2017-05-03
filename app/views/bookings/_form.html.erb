@@ -1,6 +1,7 @@
-<%= form_for @booking do |f| %>
+<%= form_for [@listing, @booking] do |f| %>
+<%= f.hidden_field :listing_id, value: @listing.id %>  
   <div>
-  <%= f.label :num_guests %>
+  <%= f.label :number_of_guests %>
   <%= f.number_field :num_guests%>
   </div>
   <div>
