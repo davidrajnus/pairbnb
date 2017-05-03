@@ -20,7 +20,7 @@ class UsersController < Clearance::UsersController
 	end
 
 	def show
-
+		@bookings = @user.bookings
 	end
 
 	#for editting the user
