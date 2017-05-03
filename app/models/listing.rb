@@ -1,6 +1,6 @@
 class Listing < ApplicationRecord
-  mount_uploaders :avatars, AvatarUploader
-  serialize :avatars, JSON
+  mount_uploaders :listings, ListingUploader
+  serialize :listings, JSON
 
   has_many :tags
 

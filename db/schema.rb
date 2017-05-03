@@ -42,18 +42,20 @@ ActiveRecord::Schema.define(version: 20170502042402) do
     t.string   "description"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.json     "avatars"
+    t.json     "images"
     t.index ["user_id"], name: "index_listings_on_user_id", using: :btree
   end
 
   create_table "tags", force: :cascade do |t|
     t.integer  "listing_id"
-    t.integer  "property_type"
-    t.integer  "room_type"
-    t.integer  "wifi"
-    t.integer  "kitchen"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.boolean  "wifi"
+    t.boolean  "kitchen"
+    t.boolean  "parking"
+    t.boolean  "smoking"
+    t.boolean  "pool"
+    t.boolean  "gym"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["listing_id"], name: "index_tags_on_listing_id", using: :btree
   end
 
@@ -73,7 +75,6 @@ ActiveRecord::Schema.define(version: 20170502042402) do
     t.datetime "updated_at",                     null: false
     t.integer  "user_role"
     t.string   "avatar"
-    t.json     "avatars"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end

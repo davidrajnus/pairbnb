@@ -23,9 +23,28 @@ class UsersController < Clearance::UsersController
 
 	end
 
+	#for editting the user
+	def edit
+		@user = User.find(params[:id])
+	end
+
+	def update
+    @user = User.find(params[:id])
+    #deletes fields that were not filled in the edit form
+    #so that it does not stop the edit function
+    update_params = user_from_params.delete_if {|k,v| v == "" || v.nil?}
+    if @user.update(update_params)
+    	flash[:success] = "Profile updated"
+      redirect_to profile_path(current_user.id)
+    else
+      render 'edit'
+    end
+  end
+
 
 	def create
 	   @user = User.new(user_from_params)
+	   byebug
 	   #sets the default user_role as customer
 	   @user.user_role = 0
 
@@ -34,6 +53,7 @@ class UsersController < Clearance::UsersController
 	     redirect_back_or url_after_create
 	   else
 	     @errors = @user.errors.full_messages
+
 	     flash[:error] = @errors
 	     redirect_to root_path
 	     # render template: "users/new"

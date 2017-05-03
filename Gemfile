@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#adapter to uploading images to a cloud platform
+gem 'fog'
 #for resizing images
 # gem 'rmagick'
 gem "mini_magick"

@@ -8,10 +8,10 @@ This is the listing for the id<br>
 
 <strong>Listing Picture</strong>
 <br>
-<% if @listing.avatars.present? %>
-<% @listing.avatars.each do |pic| %>
-<%= image_tag pic%>
-<%end%>
+<% if @listing.listings.present? %>
+  <% @listing.listings.each do |pic| %>
+  <%= image_tag pic%>
+  <%end%>
 <%end%>
 
 

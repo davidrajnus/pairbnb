@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = {}
-user['password'] = 'asdf'
+user['password'] = '1234'
 # user['password_confirmation'] = 'asdf'
 
 ActiveRecord::Base.transaction do
@@ -20,6 +20,8 @@ ActiveRecord::Base.transaction do
     user['phone'] = Faker::PhoneNumber.phone_number
     user['country'] = Faker::Address.country
     user['birthdate'] = Faker::Date.between(50.years.ago, Date.today)
+    user['user_role'] = 0
+    user['avatar'] = Faker::Avatar.image("test", "50x50")
 
     User.create(user)
   end
@@ -33,7 +35,7 @@ User.all.each { |u| uids << u.id }
 ActiveRecord::Base.transaction do
   40.times do 
     listing['name'] = Faker::App.name
-    listing['place_type'] = rand(1..3)
+    listing['place_type'] = rand(0..2)
     listing['property_type'] = ["House", "Entire Floor", "Condominium", "Villa", "Townhouse", "Castle", "Treehouse", "Igloo", "Yurt", "Cave", "Chalet", "Hut", "Tent", "Other"].sample
 
     listing['room_number'] = rand(0..5)
