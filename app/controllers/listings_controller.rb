@@ -35,6 +35,7 @@ class ListingsController < ApplicationController
 
   #shows a page for that object of that ID
   def show
+    @booking = @listing.bookings.new
 
 
   end

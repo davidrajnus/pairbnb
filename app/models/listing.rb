@@ -3,6 +3,7 @@ class Listing < ApplicationRecord
   serialize :listings, JSON
 
   has_many :tags
+  has_many :bookings
 
   enum place_type: [:city, :kampong, :industrial]
 end

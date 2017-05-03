@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :listings
   end
 
+  resources :bookings, only: [:create, :destroy]
+
 
   resources :users, controller: "users", only: [:create] do
     resource :password,
