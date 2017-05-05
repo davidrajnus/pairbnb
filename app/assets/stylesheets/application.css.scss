@@ -1,0 +1,10 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "welcome";
+@import 'rails_bootstrap_forms';
+@import "navbar";
+@import "payment";
+
+body {
+  padding-top: 60px;
+}

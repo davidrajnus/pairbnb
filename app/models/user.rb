@@ -11,8 +11,8 @@ class User < ApplicationRecord
 
   # this links the user account to the authentication table for the Auth gem
   has_many :authentications, :dependent => :destroy
-  has_many :listings
-  has_many :bookings
+  has_many :listings, :dependent => :destroy
+  has_many :bookings, :dependent => :destroy
 
   enum gender: [:male, :female]
 

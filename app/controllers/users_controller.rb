@@ -44,7 +44,7 @@ class UsersController < Clearance::UsersController
 
 	def create
 	   @user = User.new(user_from_params)
-	   byebug
+	   
 	   #sets the default user_role as customer
 	   @user.user_role = 0
 

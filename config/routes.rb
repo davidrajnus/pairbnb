@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'payment/new'
+  post 'payment/checkout'
+
   root 'welcome#index'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]

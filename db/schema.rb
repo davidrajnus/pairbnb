@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(version: 20170503024348) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "num_guests"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "payment",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["listing_id"], name: "index_bookings_on_listing_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end

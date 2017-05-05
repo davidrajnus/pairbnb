@@ -21,15 +21,21 @@
     <th>Num Guests</th>
     <th>Total Price</th>
     <th>Actions</th>
+    <th>Payment Status</th>
   </tr>
   <% @bookings.each do |booking|%>
     <tr>
-      <td><%= link_to booking.listing.title, booking.listing %></td>
+      <td><%= link_to booking.listing.name, booking.listing %></td>
       <td><%= booking.start_date.strftime('%d %B %Y')%></td>
       <td><%= booking.end_date.strftime('%d %B %Y')%></td>
       <td><%= booking.num_guests%></td>
       <td><%= booking.total_price%></td>
       <td><%= link_to "Cancel Booking", booking, method: :delete %></td>
+      <% if booking.status %>
+      <td><%= link_to "Paid" %></td>
+      <% else %>
+      <td><%= link_to "Make Payment", payment_new_path(id: booking.id) %></td>
+      <% end%>
     </tr>
   <%end%>
 </table>

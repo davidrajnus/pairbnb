@@ -6,7 +6,6 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
-    render "listings/index"
   end
 
   #initialize a new object when the page is loaded, which makes is ready to receive from a form
@@ -22,7 +21,7 @@ class ListingsController < ApplicationController
     # listing_params.user << user_id: current_user.id
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
-
+    
    if @listing.save
      redirect_to @listing
    else
@@ -58,7 +57,7 @@ class ListingsController < ApplicationController
         #what this does is to say that the listing object can only pass in these following params
         params.require(:listing).permit(:user_id, :name, :place_type, :property_type, :room_number, :bed_number, 
                                         :guest_number, :address, :zipcode, :city, :state, :country,
-                                        :price, :description, {avatars: []})
+                                        :price, :description, images: [])
     end
 
     def find_listing

@@ -11,7 +11,7 @@
     if @booking.save
       redirect_to current_user
     else
-      @errors = booking.errors.full_messages
+      @errors = @booking.errors.full_messages
       render "listings/show"
     end
   end

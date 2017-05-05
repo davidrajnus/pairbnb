@@ -1,7 +1,18 @@
-<h1>Welcome listings#index</h1>
+<h1>Vacancies</h1>
 <p>Find me in app/views/listing/index.html.erb</p>
 
 <% @listings.each do |listing| %>
-<%= listing.id %><br>
+  <%= listing.name %><br>
+  <div class="row">
+    <div class="col-md-4">
+      <% if listing.images.present? %>
+        <%= image_tag listing.images_urls[0] %>
+    </div>
+    <div class="col-md-4">
+      <%= listing.name %><br>
+    </div>
+    <%end%>
+  </div>
+  <br>
 <% end %>
 
