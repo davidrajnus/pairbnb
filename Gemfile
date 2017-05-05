@@ -51,6 +51,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap_form'
 #braintree gem for payment gateway function
 gem 'braintree'
+#using sidekiq for asynchronous email
+gem 'sidekiq'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -62,6 +64,8 @@ gem 'braintree'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+
+  gem "letter_opener"
 end
 
 group :development do
