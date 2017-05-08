@@ -3,9 +3,15 @@ class ListingsController < ApplicationController
   #before_action runs for find_listing for the following methods, so that you dont have to
   #specify in the method itself
   before_action :find_listing, only: [:show, :update, :edit, :destroy]
+  before_filter :convert_integer
 
   def index
-    @listings = Listing.all
+    # @listings = Listing.all
+    @listings = Listing.where(nil) # creates an anonymous scope
+    filtering_params(@update_params).each do |key, value|
+      
+      @listings = @listings.public_send(key, value) if value.present?
+    end
   end
 
   #initialize a new object when the page is loaded, which makes is ready to receive from a form
@@ -60,5 +66,17 @@ class ListingsController < ApplicationController
         @listing = Listing.find(params[:id])
     end
 
+    def filtering_params(params)
+      params.slice(:country_filter, :min_filter, :max_filter)
+    end
+
+
+  def convert_integer
+    params[:min_filter] = params[:min_filter].to_i
+    params[:max_filter] = params[:max_filter].to_i
+
+    @update_params = params.delete_if {|k,v| v == 0 || v.nil?}
+
+  end
 end
 

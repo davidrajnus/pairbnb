@@ -1,5 +1,12 @@
 <h1>Vacancies</h1>
 
+<%= form_tag listings_path, :method => 'get' do %>
+  <%= text_field_tag :country_filter, params[:country_filter] %>
+  <%= text_field_tag :min_filter, params[:min_filter] %>
+  <%= text_field_tag :max_filter, params[:max_filter] %>
+  <%= submit_tag "Search" %>
+<% end %> <br>
+<i class="fa fa-user" aria-hidden="true"></i>
 <% @listings.each do |listing| %>
   <div class="row">
     <div class="col-md-4">
