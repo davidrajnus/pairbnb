@@ -49,6 +49,10 @@ gem 'jbuilder', '~> 2.5'
 #for better forms
 gem 'bootstrap-sass'
 
+gem 'rails_12factor', group: :production
+
+gem 'unicorn'
+
 
 gem 'bootstrap_form'
 #braintree gem for payment gateway function
