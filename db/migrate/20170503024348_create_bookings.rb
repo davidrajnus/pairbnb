@@ -6,7 +6,7 @@ class CreateBookings < ActiveRecord::Migration[5.0]
       t.date :start_date
       t.date :end_date
       t.integer :num_guests
-      t.boolean :payment, :default => 0
+      t.boolean :payment, :default => false
 
       t.timestamps
     end
