@@ -1,47 +1,25 @@
-This is the listing for the id<br>
-<%= @listing.name %><br>
-<%= @listing.address %><br>
-<%= @listing.place_type %><br>
-<%= @listing.property_type %><br>
-<%= @listing.price %><br>
-<%= @listing.description %><br>
-
-<strong>Listing Picture</strong>
-<br>
-<% if @listing.images.present? %>
-  <% @listing.images.each do |pic| %>
-  <%= image_tag pic%>
-  <%end%>
-  <%= image_tag @listing.images_urls[0] %>
-<%end%>
-
 <div class="row">
   <div class="col-md-12">
-    <div class="carousel slide" id="myCarousel">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <% if @listing.images.present? %>
+      <!-- Indicators -->
+        <% @listing.images.each do |a| %>
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="<%= a %>"></li>
+          </ol>
+        <% end %>
+      <% end %>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
         <% if @listing.images.present? %>
-        <!-- Indicators -->
-          <% @listing.images.each do |a| %>
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="<%= a %>"></li>
-        </ol>
-
-        <% end %>
-        <% end %>
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <% if @listing.images.present? %>
           <% @listing.images.each do |image| %>
-          <div class="item <%= 'active' if image == @listing.images[0] %>">
-            <%= image_tag image.url %>
-          </div>
+            <div class="item <%= 'active' if image == @listing.images[0] %>">
+              <%= image_tag image.url %>
+            </div>
           <% end %>
-          <% end %>
-        </div>
-
-        <!-- Left and right controls -->
+        <% end %>
+      </div>
+      <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left"></span>
           <span class="sr-only">Previous</span>
@@ -50,9 +28,20 @@ This is the listing for the id<br>
           <span class="glyphicon glyphicon-chevron-right"></span>
           <span class="sr-only">Next</span>
         </a>
-        
-      </div>
+    </div>
+  </div>
+</div>
+<br>
 
- <%= button_to 'Tag Something', new_listing_tag_path(@listing), method: :get %>
+<%if current_user == @listing.user_id%>
+  <%= button_to 'Tag Something', new_listing_tag_path(@listing), method: :get %>
+<%end%>
 
- <%= render "bookings/form" %>
+<%if current_user != @listing.user_id%>
+  <%= render "bookings/form" %>
+<%end%>
+
+
+
+
+

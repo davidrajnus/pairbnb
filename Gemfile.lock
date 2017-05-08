@@ -383,7 +383,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-datepicker-rails
-  bootstrap-sass (~> 3.3, >= 3.3.7)
+  bootstrap-sass
   bootstrap_form
   braintree
   byebug

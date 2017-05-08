@@ -9,6 +9,7 @@
     #all the listing information is stored with the booking, which in this case is the listing id in booking
     @booking.listing = @listing
     if @booking.save
+      ReservationJob.perform_later(current_user)
       redirect_to current_user
     else
       @errors = @booking.errors.full_messages

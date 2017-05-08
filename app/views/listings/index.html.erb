@@ -1,15 +1,18 @@
 <h1>Vacancies</h1>
-<p>Find me in app/views/listing/index.html.erb</p>
 
 <% @listings.each do |listing| %>
-  <%= listing.name %><br>
   <div class="row">
     <div class="col-md-4">
       <% if listing.images.present? %>
         <%= image_tag listing.images_urls[0] %>
     </div>
     <div class="col-md-4">
-      <%= listing.name %><br>
+      <dl class="dl-horizontal">
+        <dt><h3><%=listing.name%></h3></dt><dd></dd>
+        <dt>Country:</dt><dd><%=listing.country%></dd>
+        <dt>Price:</dt><dd>$<%=listing.price%>/night</dd><br>
+        <%= link_to "Book Now", listing_path(id: listing.id), class: "btn btn-primary btn-lg btn-block" %>
+      </dl>
     </div>
     <%end%>
   </div>

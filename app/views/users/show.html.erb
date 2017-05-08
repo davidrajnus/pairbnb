@@ -1,41 +1,59 @@
-<h1>This is the profile page for user id</h1>
-<%=full_name%>
-<br>
-<strong>Profile Picture</strong>
-<br>
-<% if @user.avatar.present? %>
-<%= image_tag @user.avatar_url%>
-<%end%>
+<h1>Welcome to your profile <%=@user.full_name%>!</h1>
 
-<br>
-<% if @user.avatar.present? %>
-<%= image_tag @user.avatar_url(:thumb)%>
-<%end%>
-
-<h2>Bookings</h2>
-<table>
-  <tr>
-    <th>Listing Title</th>
-    <th>Start Date</th>
-    <th>End Date </th>
-    <th>Num Guests</th>
-    <th>Total Price</th>
-    <th>Actions</th>
-    <th>Payment Status</th>
-  </tr>
-  <% @bookings.each do |booking|%>
-    <tr>
-      <td><%= link_to booking.listing.name, booking.listing %></td>
-      <td><%= booking.start_date.strftime('%d %B %Y')%></td>
-      <td><%= booking.end_date.strftime('%d %B %Y')%></td>
-      <td><%= booking.num_guests%></td>
-      <td><%= booking.total_price%></td>
-      <td><%= link_to "Cancel Booking", booking, method: :delete %></td>
-      <% if booking.status %>
-      <td><%= link_to "Paid" %></td>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <% if @user.avatar.present? %>
+      <%= image_tag @user.avatar_url(:thumb)%>
       <% else %>
-      <td><%= link_to "Make Payment", payment_new_path(id: booking.id) %></td>
-      <% end%>
-    </tr>
-  <%end%>
-</table>
+      <%= gravatar_for @user %>
+      <%end%>
+    </div>
+    <div class="col-md-9">
+      <dl class="dl-horizontal">
+        <dt>Fullname:</dt> <dd><%= @user.full_name%></dd>
+        <dt>Gender:</dt><dd><%= @user.gender%></dd>
+        <dt>Birthday:</dt><dd><%= @user.birthdate%></dd>
+        <dt>Country:</dt><dd><%= @user.country%></dd>
+      </dl>
+      <div class="row">
+        <div class="col-md-2"></div>
+          <%= link_to "Edit Info", edit_user_path, class: "btn btn-primary btn-lg" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if @bookings.any? %>
+  <h2 class="center">Bookings</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <tr>
+        <th>Listing Title</th>
+        <th>Start Date</th>
+        <th>End Date </th>
+        <th>Num Guests</th>
+        <th>Total Price</th>
+        <th>Actions</th>
+        <th>Payment Status</th>
+      </tr>
+      <% @bookings.each do |booking|%>
+        <tr>
+          <td><%= link_to booking.listing.name, booking.listing %></td>
+          <td><%= booking.start_date.strftime('%d %B %Y')%></td>
+          <td><%= booking.end_date.strftime('%d %B %Y')%></td>
+          <td><%= booking.num_guests%></td>
+          <td><%= booking.total_price%></td>
+          <td><%= link_to "Cancel Booking", booking, method: :delete %></td>
+          <% if booking.status %>
+          <td><%= link_to "Paid" %></td>
+          <% else %>
+          <td><%= link_to "Make Payment", payment_new_path(id: booking.id) %></td>
+          <% end%>
+        </tr>
+      <%end%>
+    </table>
+  </div>
+<%else%>
+  <h2 class="center">You have no bookings at the moment</h2>
+<%end%>

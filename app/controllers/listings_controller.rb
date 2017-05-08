@@ -10,12 +10,9 @@ class ListingsController < ApplicationController
 
   #initialize a new object when the page is loaded, which makes is ready to receive from a form
   def new
-
     @listing = Listing.new
     render "listings/new"
   end
-
-  
 
   def create
     # listing_params.user << user_id: current_user.id
@@ -35,7 +32,6 @@ class ListingsController < ApplicationController
   #shows a page for that object of that ID
   def show
     @booking = @listing.bookings.new
-
 
   end
 
